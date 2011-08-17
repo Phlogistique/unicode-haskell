@@ -20,9 +20,6 @@ for [key, value] in items(s:mappedChars)
     exec "imap <buffer>" key value
 endfor
 
-" Turn syntax highlight on for new symbols
-syn match hsVarSym "(\|λ\|←\|→\|≲\|≳\|≡\|≠\| )"
-
 if exists("s:loaded_unihaskell")
     finish
 endif
