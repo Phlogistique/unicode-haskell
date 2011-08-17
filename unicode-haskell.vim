@@ -46,7 +46,7 @@ function s:UTF8ToHaskellSrc()
     let l:column = col(".")
 
     for [key, value] in items(s:mappedChars)
-        exec "%s," . value . "," . s:safeRegexp(key) . ",eg"
+        exec "silent %s," . value . "," . s:safeRegexp(key) . ",eg"
     endfor
 
     let &l:fileencoding = s:oldencoding
@@ -63,7 +63,7 @@ function s:HaskellSrcToUTF8()
     set fileencoding=utf-8
 
     for [key, value] in items(s:mappedChars)
-        exec "%s," . s:safeRegexp(key) . "," . value . ",eg"
+        exec "silent %s," . s:safeRegexp(key) . "," . value . ",eg"
     endfor
 
     let &l:fileencoding = s:oldencoding
