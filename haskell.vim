@@ -1,4 +1,5 @@
 " Unicode Haskell for Vim
+" by Frerich Raabe <frerich.raabe@gmail.com>
 " Based on Haskell Cuteness by Andrey Popp <andrey.popp@braintrace.ru>
 
 let s:mappedChars = {
