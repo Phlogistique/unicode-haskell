@@ -20,10 +20,10 @@ for [key, value] in items(s:mappedChars)
     exec "imap <buffer>" key value
 endfor
 
-if exists("s:loaded_unihaskell")
+if exists("s:loaded_unicodehaskell")
     finish
 endif
-let s:loaded_unihaskell = 1
+let s:loaded_unicodehaskell = 1
 
 augroup HaskellC
     autocmd BufReadPost *.hs cal s:HaskellSrcToUTF8()
