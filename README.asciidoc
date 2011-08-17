@@ -6,6 +6,11 @@ Haskell source code is displayed in Vim/GVim by replacing certain character
 sequences with appropriate Unicode replacements. The Unicode characters
 are not written to disk but only used for display.
 
+Screenshot
+~~~~~~~~~~~~
+See http://imageshack.us/photo/my-images/840/unicodehaskell.png/ for a sample
+of what Unicode characters this script uses in the editor.
+
 Installation
 ~~~~~~~~~~~~
 
