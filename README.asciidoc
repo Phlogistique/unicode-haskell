@@ -37,6 +37,8 @@ Credits
 'unicode-haskell.vim' was written by mailto:frerich.raabe@gmail.com[Frerich
 Raabe].
 
-This script is based on the 'Haskell Cuteness' vim script by Andrey Popp,
-which in turn is based on the 'unilatex.vim' script by Jos van den Oever.
+This script is based on the http://www.vim.org/scripts/script.php?script_id=2603[Haskell
+Cuteness] vim script by mailto:andrey.popp@braintrace.ru[Andrey Popp],
+which in turn is based on the http://www.vim.org/scripts/script.php?script_id=284[unilatex.vim]
+script by mailto:oever@fenk.wau.nl[Jos van den Oever].
 
