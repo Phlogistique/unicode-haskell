@@ -1,0 +1,42 @@
+unicode-haskell.vim - beautifies Haskell source code using Unicode characters
+-----------------------------------------------------------------------------
+
+'unicode-haskell.vim' is a simple Vim script which will improve the way
+Haskell source code is displayed in Vim/GVim by replacing certain character
+sequences with appropriate Unicode replacements. The Unicode characters
+are not written to disk but only used for display.
+
+Installation
+~~~~~~~~~~~~
+
+Simply copy the 'unicode-haskell.vim' file into the 'ftplugin/haskell'
+subdirectory of your vim configuration folder; that would be
+'$HOME/.vimrc/ftplugin/haskell' on Mac OS/X and Linux and
+'%HOME%\vimfiles\ftplugin\haskell' on Windows.
+
+Furthermore, the filetype plugin must be turned on so that vim picks up
+this script and you should set the encoding to UTF-8 so that all the
+fancy characters are actually displayed Just add
+
+ @filetype plugin on
+ @set encoding=utf-8
+
+to your '.vimrc' or '.gvimrc' file.
+
+Finally, make sure that you use 'gvim' with a Unicode font. On Mac OSX
+the font DejaVu Sans Mono works very well. Add
+
+ @if has("gui_running")
+ @  set guifont=DejaVu_Sans_Mono:h9
+ @endif
+
+to your '.vimrc' to use it.
+
+Credits
+~~~~~~~
+'unicode-haskell.vim' was written by mailto:frerich.raabe@gmail.com[Frerich
+Raabe].
+
+This script is based on the 'Haskell Cuteness' vim script by Andrey Popp,
+which in turn is based on the 'unilatex.vim' script by Jos van den Oever.
+
