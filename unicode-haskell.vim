@@ -21,7 +21,7 @@ let s:mappedChars = {
 
 " Turn entered text into Unicode characters if possible
 for [key, value] in items(s:mappedChars)
-    exec "imap <buffer>" key value
+    exec "imap <buffer>" substitute(key, ' ', '<space>', 'g') value
 endfor
 
 if exists("s:loaded_unicodehaskell")
