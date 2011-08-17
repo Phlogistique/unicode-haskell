@@ -13,7 +13,10 @@ let s:mappedChars = {
   \ '=>': '⇒',
   \ '>>': '»',
   \ '. ': '∘ ',
-  \ 'forall ': '∀'
+  \ 'forall ': '∀',
+  \ '()': '∅',
+  \ '`elem`': '∈',
+  \ '`notElem`': '∉'
   \ }
 
 " Turn entered text into Unicode characters if possible
