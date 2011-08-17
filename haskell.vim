@@ -2,7 +2,7 @@
 " Based on Haskell Cuteness by Andrey Popp <andrey.popp@braintrace.ru>
 
 let s:mappedChars = {
-  \ '\\': 'λ',
+  \ '\': 'λ',
   \ '<-': '←',
   \ '->': '→',
   \ '<=': '≲',
@@ -34,29 +34,26 @@ augroup HaskellC
     autocmd BufWritePost *.hs cal s:HaskellSrcToUTF8()
 augroup END
 
-" function to convert ''fancy haskell source'' to haskell source
+function s:safeRegexp(s)
+    return escape(a:s, "\\.")
+endfunction
+
+" Convert Unicode Haskell source code to plain ASCII source code when saving
+" data.
 function s:UTF8ToHaskellSrc()
     let s:line = line(".")
     let s:column = col(".")
 
-    silent %s/λ/\\/eg
-    silent %s/←/<-/eg
-    silent %s/→/->/eg
-    silent %s/≲/<=/eg
-    silent %s/≳/>=/eg
-    silent %s/≡/==/eg
-    silent %s/≠/\/=/eg
-    silent %s/⇒/=>/eg
-    silent %s/»/>>/eg
-    silent %s/∙ /. /eg
-    silent %s/∀/forall /eg
-
+    for [key, value] in items(s:mappedChars)
+        exec "%s," . value . "," . s:safeRegexp(key) . ",eg"
+    endfor
 
     let &l:fileencoding = s:oldencoding
     call cursor(s:line,s:column)
 endfunction
 
-" function to convert haskell source to ''fancy haskell source''
+" Convert ASCII Haskell source code to fancy Unicode source code when reading
+" Haskell programs.
 function s:HaskellSrcToUTF8()
     let s:line = line(".")
     let s:column = col(".")
@@ -64,17 +61,9 @@ function s:HaskellSrcToUTF8()
     let s:oldencoding = &l:fileencoding
     set fileencoding=utf-8
 
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<=\\\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/λ\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<=->\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/→\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<=<-\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/←\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<=<=\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/≲\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<=>=\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/≳\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<===\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/≡\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<=\/=\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/≠\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<==>\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/⇒\1/eg
-    silent %s/[^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>?@\^|~.]\@<=>>\([^λ←→≲≳≡≠⇒»∙∀\\\-!#$%&*+/<=>\?@\^|~.]\)/»\1/eg
-    silent %s/forall /∀/eg
-    silent %s/ \@<=\. /∙ /eg
+    for [key, value] in items(s:mappedChars)
+        exec "%s," . s:safeRegexp(key) . "," . value . ",eg"
+    endfor
 
     let &l:fileencoding = s:oldencoding
     call cursor(s:line,s:column)
