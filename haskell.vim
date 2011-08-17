@@ -38,22 +38,22 @@ endfunction
 " Convert Unicode Haskell source code to plain ASCII source code when saving
 " data.
 function s:UTF8ToHaskellSrc()
-    let s:line = line(".")
-    let s:column = col(".")
+    let l:line = line(".")
+    let l:column = col(".")
 
     for [key, value] in items(s:mappedChars)
         exec "%s," . value . "," . s:safeRegexp(key) . ",eg"
     endfor
 
     let &l:fileencoding = s:oldencoding
-    call cursor(s:line,s:column)
+    call cursor(l:line, l:column)
 endfunction
 
 " Convert ASCII Haskell source code to fancy Unicode source code when reading
 " Haskell programs.
 function s:HaskellSrcToUTF8()
-    let s:line = line(".")
-    let s:column = col(".")
+    let l:line = line(".")
+    let l:column = col(".")
 
     let s:oldencoding = &l:fileencoding
     set fileencoding=utf-8
@@ -63,7 +63,7 @@ function s:HaskellSrcToUTF8()
     endfor
 
     let &l:fileencoding = s:oldencoding
-    call cursor(s:line,s:column)
+    call cursor(l:line, l:column)
 endfunction
 
 do HaskellC BufRead
