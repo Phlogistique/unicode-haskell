@@ -18,17 +18,17 @@ Furthermore, the filetype plugin must be turned on so that vim picks up
 this script and you should set the encoding to UTF-8 so that all the
 fancy characters are actually displayed Just add
 
- @filetype plugin on
- @set encoding=utf-8
+ filetype plugin on
+ set encoding=utf-8
 
 to your '.vimrc' or '.gvimrc' file.
 
 Finally, make sure that you use 'gvim' with a Unicode font. On Mac OSX
 the font DejaVu Sans Mono works very well. Add
 
- @if has("gui_running")
- @  set guifont=DejaVu_Sans_Mono:h9
- @endif
+ if has("gui_running")
+   set guifont=DejaVu_Sans_Mono:h9
+ endif
 
 to your '.vimrc' to use it.
 
