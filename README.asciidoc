@@ -14,8 +14,16 @@ of what Unicode characters this script uses in the editor.
 Installation
 ~~~~~~~~~~~~
 
-Simply copy the 'unicode-haskell.vim' file into the 'ftplugin/haskell'
-subdirectory of your vim configuration folder; that would be
+In case you're using something like https://github.com/tpope/vim-pathogen[Pathogen]
+you can simply clone this repository into your 'bundle' directory:
+
+ cd ~/.vim/bundle
+ git clone git://github.com/frerich/unicode-haskell.vim
+
+Now 'unicode-haskell.vim' is installed.
+
+Otherwise, simply copy the 'unicode-haskell.vim' file into the
+'ftplugin/haskell' subdirectory of your vim configuration folder; that would be
 '$HOME/.vimrc/ftplugin/haskell' on Mac OS/X and Linux and
 '%HOME%\vimfiles\ftplugin\haskell' on Windows.
 
