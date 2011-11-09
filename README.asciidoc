@@ -18,7 +18,7 @@ In case you're using something like https://github.com/tpope/vim-pathogen[Pathog
 you can simply clone this repository into your 'bundle' directory:
 
  cd ~/.vim/bundle
- git clone git://github.com/frerich/unicode-haskell.vim
+ git clone git://github.com/frerich/unicode-haskell.git
 
 Now 'unicode-haskell.vim' is installed.
 
@@ -29,7 +29,7 @@ Otherwise, simply copy the 'unicode-haskell.vim' file into the
 
 Furthermore, the filetype plugin must be turned on so that vim picks up
 this script and you should set the encoding to UTF-8 so that all the
-fancy characters are actually displayed Just add
+fancy characters are actually displayed. Just add:
 
  filetype plugin on
  set encoding=utf-8
